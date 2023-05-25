@@ -1,0 +1,26 @@
+method: grid
+metric:
+  goal: maximize
+  name: ents_f
+command:
+  - ${env}
+  - ${interpreter}
+  - sweeps_using_config.py
+  - config.cfg
+  - ./
+parameters:
+  components.ner.model.hidden_width:
+    values:
+      - 128
+      - 64
+      - 32
+  components.transformer.model.get_spans.window:
+    values:
+      - 512
+      - 256
+      - 128
+  training.batcher.size:
+    values:
+      - 500
+      - 1000
+      - 2000
